@@ -1,5 +1,6 @@
-create database daata;
+create DATABASE daata ; 
 use daata ;
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 /* Table : Administrator                                        */
 /*==============================================================*/
 create table Administrator (
@@ -54,6 +55,16 @@ create table shippingInfo (
    shippingRegionId     int                  null,
    shippingType         varchar(254)         null,
    constraint PK_SHIPPINGINFO primary key (shippingId)
+);
+/*==============================================================*/
+/* Table : customer                                             */
+/*==============================================================*/
+create table customer (
+   customerName         varchar(254)         not null,
+   customerEmail        varchar(254)         null,
+   CreditCardInfo       varchar(254)         null,
+   accountBalance       float                null,
+   constraint PK_CUSTOMER primary key (customerName)
 );
 
 alter table Orders
