@@ -1,6 +1,6 @@
-create DATABASE daata ; 
-use daata ;
-CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE daata1 ;
+use daata1 ;
+CREATE USER 'emaa'@'localhost' IDENTIFIED BY 'password';
 /* Table : Administrator                                        */
 /*==============================================================*/
 create table Administrator (
@@ -27,7 +27,7 @@ create table Orders (
    dateCreated          varchar(254)         null,
    dateShipped          varchar(254)         null,
    CustomerId           varchar(254)         null,
-   statu                varchar(254)         null,
+   status               varchar(254)         null,
    shippingId           varchar(254)         null,
    constraint PK_ORDER primary key (orderId)
 );
@@ -41,7 +41,7 @@ create table order_Details (
    productId            int                  null,
    productName          varchar(254)         null,
    quantity             int                  null,
-   unitcosr             float                null,
+   unitcost             float                null,
    subTotal             float                null,
    constraint PK_ORDER_DETAILS primary key (orderDetailsId)
 );
@@ -65,20 +65,7 @@ create table customer (
    CreditCardInfo       varchar(254)         null,
    accountBalance       float                null,
    constraint PK_CUSTOMER primary key (customerName)
-);
-
-alter table Orders
-   add constraint FK_ORDER_ASSOCIATI_CUSTOMER foreign key (customerName)
-      references customer (customerName);
-
-alter table Orders
-   add constraint FK_ORDER_ASSOCIATI_SHIPPING foreign key (shippingId)
-      references shippingInfo (shippingId);
-
-alter table order_Details
-   add constraint FK_ORDER_DE_ASSOCIATI_ORDER foreign key (orderId)
-      references Orders (orderId);
-      
+);      
  /* Table: Administrator  insert */   
  INSERT INTO Administrator ( adminName , adminEmail ) VALUES 
 ('imane',  'admin@gmail.com');
@@ -105,7 +92,7 @@ WHERE userId = '2';
 
 /* Table: orders  insert */   
  INSERT INTO Orders ( orderId , dateCreated , dateShipped, CustomerId, status , ShippingId ) VALUES 
-('20',  '25/03','30/03' , 5 , up , 3);
+('20',  '25/03','30/03' , 5 , 'up' , 3);
 /* Table: orders update    */
 
 UPDATE Orders
@@ -150,15 +137,3 @@ SET orderDetailsId ='3', orderId='6', productId='9' , productName='fkk' , quanti
 /* Table: order_Details Delete    */
 DELETE FROM order_Details 
 WHERE orderId='6';
-
-
-      
-      
-      
-
-
-
-
-
-
-
